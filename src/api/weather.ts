@@ -1,5 +1,5 @@
 import {API_CONFIG} from "./config.ts";
-import {Coordinates, WeatherData} from "./types.ts";
+import {Coordinates, ForecastData, WeatherData} from "./types.ts";
 
 class WeatherAPI{
 
@@ -21,4 +21,23 @@ class WeatherAPI{
         return response.json();
     }
 
+    async getCurrentWeather({lat,lon} : Coordinates): Promise<WeatherData>{
+        const url = this.createURL(`${API_CONFIG.BASE_URL}/weather`,{
+            lat: lat.toString(),
+            lon: lon.toString(),
+            units: API_CONFIG.DEFAULT_PARAMS.units,
+        })
+
+        return this.fetchData<WeatherData>(url);
+    }
+
+    async getForecast({lat,lon} : Coordinates): Promise<ForecastData>{
+        const url = this.createURL(`${API_CONFIG.BASE_URL}/forecast`,{
+            lat: lat.toString(),
+            lon: lon.toString(),
+            units: API_CONFIG.DEFAULT_PARAMS.units,
+        })
+
+        return this.fetchData<ForecastData>(url);
+    }
 }
