@@ -6,6 +6,7 @@ import { ThemeProvider } from "./components/context/theme-provider.tsx";
 import WeatherDashboard from "./pages/weather-dashboard.tsx";
 import CityPage from "./pages/city-page.tsx";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             </Layout>
           </ThemeProvider>
         </BrowserRouter>
+          <ReactQueryDevtools initialIsOpen={false}/>
       </QueryClientProvider>
   )
 }
