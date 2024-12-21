@@ -1,5 +1,5 @@
 import {API_CONFIG} from "./config.ts";
-import {Coordinates} from "./types.ts";
+import {Coordinates, WeatherData} from "./types.ts";
 
 class WeatherAPI{
 
@@ -10,6 +10,15 @@ class WeatherAPI{
         });
 
         return `${endpoint}?${searchParams.toString()}`;
+    }
+    private async fetchData<T>(url:string): Promise<T> {
+        const response = await fetch(url);
+
+        if (!response.ok){
+            throw new Error(`Weather API Error: ${response.statusText}`);
+        }
+
+        return response.json();
     }
 
 }
