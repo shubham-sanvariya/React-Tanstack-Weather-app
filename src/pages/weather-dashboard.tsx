@@ -4,6 +4,7 @@ import {useGeolocation} from "../hooks/use-geolocation.ts";
 import WeatherSkeleton from "../components/loading-skeleton.tsx";
 import {Alert, AlertDescription, AlertTitle} from "../components/ui/alert.tsx";
 import {useForecastQuery, useReverseGeocodeQuery, useWeatherQuery} from "../hooks/use-weather.ts";
+import {CurrentWeather} from "../components/current-weather.tsx";
 
 const WeatherDashboard = () => {
 
@@ -12,6 +13,7 @@ const WeatherDashboard = () => {
     const weatherQuery = useWeatherQuery(coordinates);
     const forecastQuery = useForecastQuery(coordinates);
     const locationQuery = useReverseGeocodeQuery(coordinates);
+    const locationName = locationQuery.data?.[0];
 
     const handleRefresh = () => {
         getLocation();
@@ -88,7 +90,17 @@ const WeatherDashboard = () => {
                 >
                     <RefreshCw className={`h-4 w-4 ${weatherQuery.isFetching  ? 'animate-spin' : ""}`}/>
                 </Button>
+            </div>
 
+            <div>
+                <div>
+                    {/*current weather*/}
+                    <CurrentWeather
+                        data={weatherQuery.data}
+                        locationName={locationName}
+                    />
+                    {/*hourly temperature*/}
+                </div>
             </div>
         </div>
     )
