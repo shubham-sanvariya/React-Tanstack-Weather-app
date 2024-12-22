@@ -1,6 +1,6 @@
 import {Button} from "../components/ui/button.tsx";
 import {AlertTriangle, MapPin, RefreshCw} from "lucide-react";
-import {useGeolocation} from "../hooks/use-geolocation.tsx";
+import {useGeolocation} from "../hooks/use-geolocation.ts";
 import WeatherSkeleton from "../components/loading-skeleton.tsx";
 import {Alert, AlertDescription, AlertTitle} from "../components/ui/alert.tsx";
 

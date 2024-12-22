@@ -9,7 +9,16 @@ import {ReactQueryDevtools} from "@tanstack/react-query-devtools";
 
 function App() {
 
-    const queryClient = new QueryClient();
+    const queryClient = new QueryClient({
+        defaultOptions: {
+            queries: {
+                staleTime: 5 * 60 * 1000, // 5 minutes (if data is fetched after 5 min for example of the same city it will fetch new data
+                gcTime: 10 * 60 * 1000, // 10 minutes garbage collection after 10 min (means gets deleted)
+                retry: false,
+                refetchOnWindowFocus: false
+            }
+        }
+    });
 
     return (
         <QueryClientProvider client={queryClient}>
