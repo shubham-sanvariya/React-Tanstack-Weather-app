@@ -6,6 +6,7 @@ import {Alert, AlertDescription, AlertTitle} from "../components/ui/alert.tsx";
 import {useForecastQuery, useReverseGeocodeQuery, useWeatherQuery} from "../hooks/use-weather.ts";
 import {CurrentWeather} from "../components/current-weather.tsx";
 import HourlyTemperature from "../components/hourly-temperature.tsx";
+import WeatherDetails from "../components/weather-details.tsx";
 
 const WeatherDashboard = () => {
 
@@ -104,6 +105,9 @@ const WeatherDashboard = () => {
                     <HourlyTemperature
                         data={forecastQuery.data}
                     />
+                </div>
+                <div>
+                    <WeatherDetails data={weatherQuery.data}/>
                 </div>
             </div>
         </div>
