@@ -3,6 +3,7 @@ import logo from '../public/logo.png';
 import logo2 from '../public/logo2.png';
 import {useTheme} from "./context/theme-provider.tsx";
 import {Moon, Sun} from "lucide-react";
+import CitySearch from "./city-search.tsx";
 
 const Header = () => {
 
@@ -16,10 +17,13 @@ const Header = () => {
                     <img src={isDark ? logo : logo2} alt={'Klimate Logo'} className={'h-14'}/>
                 </Link>
 
-                <div className={`flex items-center cursor-pointer transition-transform duration-500 ${isDark ? 'rotate-180': 'rotate-0'}`}>
+                <div className={'flex gap-4'}>
                     {/*search*/}
+                    <CitySearch/>
                     {/*theme toggle */}
-                    <div onClick={() => setTheme(isDark ? "light" : "dark")}>
+                    <div
+                        className={`flex items-center cursor-pointer transition-transform duration-500 ${isDark ? 'rotate-180': 'rotate-0'}`}
+                        onClick={() => setTheme(isDark ? "light" : "dark")}>
                         {isDark ?( <Sun className={'h-6 w-6 text-yellow-500 rotate-0 transition-all'}/>)
                         : (<Moon className={'h-6 w-6 text-blue-500 rotate-0 transition-all'}/>)}
                     </div>
