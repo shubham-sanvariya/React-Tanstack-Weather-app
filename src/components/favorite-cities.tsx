@@ -57,14 +57,14 @@ function FavoriteCityTablet({
             className="relative flex min-w-[250px] cursor-pointer items-center gap-3 rounded-lg border bg-card p-4 pr-8 shadow-sm transition-all hover:shadow-md"
         >
             <Button
-                className="absolute right-1 top-1 h-6 w-6 rounded-full p-0 hover:text-destructive-foreground group-hover:opacity-100"
+                className="absolute right-1 top-1 h-6 w-6 rounded-full p-0 hover:text-destructive-foreground group-hover:opacity-100 bg-background"
                 onClick={(e) => {
                     e.stopPropagation();
                     onRemove(id);
                     toast.error(`Removed ${name} from Favorites`);
                 }}
             >
-                <X className={'h-4 w-4'}/>
+                <X className={'h-4 w-4 text-red-500 hover:text-red-600'}/>
             </Button>
 
             {isLoading ? (
