@@ -47,8 +47,6 @@ const WeatherForecast = ({data}: WeatherForecastProps) => {
     }, {} as Record<string, DailyForecast>);
 
     const nextDays = Object.values(dailyForecasts).slice(0, 6);
-    console.log(nextDays);
-
 
     return (
         <Card>
